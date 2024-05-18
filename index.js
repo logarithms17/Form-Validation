@@ -9,12 +9,13 @@ const name = nameInput.value.trim()
 form.addEventListener("submit", (e) => {
     let message = []
     if (nameInput.value !== "") {
+        if (!/^[A-Za-z\s]+$/.test(name)) {  
+            message.push("Name must only contain letters.");
+        }   
         if (nameInput.value.length < 3){
         message.push("Names must be 3 or more letters.")
         }
-        if (!/^[A-Za-z\s]+$/.test(name)) {  
-            message.push("Name must only contain letters.");
-        }
+        
         
     } else {
         message.push("Name must be provided.")
