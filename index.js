@@ -11,7 +11,7 @@ form.addEventListener("submit", (e) => {
             message.push("Name must only contain letters.");
         }   
         if (nameInput.value.length < 3){
-        message.push("Names must be 3 or more letters.")
+        message.push("Name must be 3 or more letters.")
         }
         
     } else {
