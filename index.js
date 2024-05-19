@@ -3,19 +3,16 @@ const password = document.getElementById("password")
 const error = document.getElementById("error")
 const button = document.getElementById("button")
 const form = document.querySelector("form")
-const name = nameInput.value.trim()
-
 
 form.addEventListener("submit", (e) => {
     let message = []
     if (nameInput.value !== "") {
-        if (!/^[A-Za-z\s]+$/.test(name)) {  
+        if (!/^[a-zA-Z]+$/.test(nameInput.value)) {  
             message.push("Name must only contain letters.");
         }   
         if (nameInput.value.length < 3){
         message.push("Names must be 3 or more letters.")
         }
-        
         
     } else {
         message.push("Name must be provided.")
@@ -25,12 +22,17 @@ form.addEventListener("submit", (e) => {
         if (password.value.length < 3) {
             message.push("Password must be 3 or more characters")
         }
+        if (password.value.length > 15) {
+            message.push("Password must be less than 15 characters")
+        }
     } else {
         message.push("Please provide your password.")
     }
 
-    console.log(message)
-    console.log(password.value)
+    if (password.value === "password") {
+        message.push("Password cannot be password")
+    }
+
     error.style.color = "red"
     error.style.fontWeight = "bold"
     error.innerHTML = message.join('</br>')
